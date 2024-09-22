@@ -56,35 +56,46 @@ def initial_screen():
         screen.blit(letter, (exit_button.x + (i * 20), exit_button.y + (exit_button.height - letter.get_height()) / 2))
     if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
         if start_button.collidepoint(pygame.mouse.get_pos()):
-            print("START")
+            screen.fill((255, 199, 188))
+            return 1
         if exit_button.collidepoint(pygame.mouse.get_pos()):
             print("EXIT")
             pygame.quit()
             sys.exit()
+    pygame.display.update()
+
 def screen_options():
+
+    screen.fill((255, 199, 188))
+    
     fuente = pygame.font.SysFont('Arial', 30)
 
-    
     options_title = pygame.Rect(75, 20, 400, 45)
     predeterminate_crosswords = pygame.Rect(100, 65, 300, 45)  
     create_crosswords = pygame.Rect(100,110 , 100, 35)  
     back_button = pygame.Rect(100, 220, 100, 35)
 
-    pygame.draw.rect(screen, (58, 188, 252), options_title)
-    pygame.draw.rect(screen, (52, 148, 252), predeterminate_crosswords)
-    pygame.draw.rect(screen, (252, 52, 75), create_crosswords)
-    pygame.draw.rect(screen, (252, 52, 75), back_button)
+    pygame.draw.rect(screen, (242, 75, 112), options_title)
+    pygame.draw.rect(screen, (214, 134, 250), predeterminate_crosswords)
+    pygame.draw.rect(screen, (214, 134, 250), create_crosswords)
+    pygame.draw.rect(screen, (242, 75, 112), back_button)
+
+    pygame.display.update()
 
 run = True
-
 while run:
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            run = False
+        screen.fill((255, 199, 188))
+    screen_one = initial_screen()
+    if screen_one == 1:
+        screen_two  = screen_options()
+    elif event.type == pygame.QUIT:
+        run = False
 
-    # 3 valores rgb
-    screen.fill((255, 199, 188))
-    initial_screen()
-    pygame.display.update()
+
+
+        
+
+    
 
 pygame.quit()
