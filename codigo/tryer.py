@@ -1,58 +1,70 @@
-import numpy as np
+import sys
+import pygame
+import os
 
-def get_crosswrod_size(side: int) -> tuple[int, int]:
-    """CREATES THE CROSSWORD SIZE BY N * M, M = (N * 2 - 1)
-    
-    Args:
-        side (int): CROSSWORD SIDE
+print(os.getcwd())
 
-    Returns:
-        tuple[int,int]: RETURNS CROSSWORD (X,Y)
-    """
-    return side, side * 2 - 1
+pygame.init()
 
-def create_matrix(side: int) -> np.ndarray:
-    """CREATES THE MATRIX BASED ON THE SIDE N*M
-    
-    Args:
-        side (int): MATRIX SIDES
+# PANTALLA
+width = 550
+height = 300
+screen = pygame.display.set_mode((width, height))
+pygame.display.set_caption("CRUCIGRAMA3D")
+icon = pygame.image.load('icon.png')
+pygame.display.set_icon(icon)
 
-    Returns:
-        np.ndarray: MATRIX RETURNED
-    """
-    x_y = get_crosswrod_size(side)
-    x = x_y[0]
-    y = x_y[1]
-    matrix = np.zeros((x, y), dtype=int)
-    return matrix
+# FUENTES
+fuente = pygame.font.SysFont('Arial', 30)
 
-def cambiar_cara(side: int) -> tuple[np.ndarray, np.ndarray]:
-    """
-    Extrae las dos caras de la matriz.
-    La primera cara es [x, y] y la segunda cara es [y, z].
+# RECTÁNGULOS
+title = pygame.Rect(100, 75, 400, 45)
+start_button = pygame.Rect(274, 75, 45, 179)  # Botón de START
+exit_button = pygame.Rect(210, 220, 109, 35)  # Botón de EXIT
 
-    Args:
-        side (int): Tamaño del lado de la matriz.
+# LOOP DE LA PANTALLA
+run = True
+while run:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            run = False
 
-    Returns:
-        tuple[np.ndarray, np.ndarray]: Dos matrices representando las caras del cubo.
-    """
-    matriz = create_matrix(side)
-    N, M = matriz.shape
-    if M != (N * 2 - 1):
-        raise ValueError("La matriz debe tener dimensiones N x M, donde M = N * 2 - 1.")
+    # 3 valores rgb
+    screen.fill((255, 199, 188))
+    pygame.draw.rect(screen, (58, 188, 252), title)
+    pygame.draw.rect(screen, (52, 148, 252), start_button)
+    pygame.draw.rect(screen, (252, 52, 75), exit_button)
 
-    # Primera cara [x, y]
-    cara_x_y = matriz[:, :N]
-    
-    # Segunda cara [y, z]
-    cara_y_z = matriz[:, N-1:]
+    # DIBUJAR RECTÁNGULOS NEGROS ALREDEDOR DE LOS BOTONES
+    pygame.draw.rect(screen, (0, 0, 0), start_button, 2)  # Borde negro alrededor del botón START
+    pygame.draw.rect(screen, (0, 0, 0), exit_button, 2)   # Borde negro alrededor del botón EXIT
+    pygame.draw.rect(screen, (0, 0, 0), title, 2) 
+    # TÍTULO "3D CROSSWORD"
+    title_text = fuente.render("3  D  C  R  O  S  S  W  O  R  D", True, (0, 0, 0))
+    screen.blit(title_text, (title.x + (title.width - title_text.get_width()) / 2,
+                              title.y + (title.height - title_text.get_height()) / 2))
 
-    return cara_x_y, cara_y_z
+    # MENSAJES CON FORMATO DE CRUCIGRAMA
+    # "TAR" en forma vertical, centrado en el botón
+    tar_message = [fuente.render("T", True, (0, 0, 0)),
+                   fuente.render("A", True, (0, 0, 0)),
+                   fuente.render("R", True, (0, 0, 0))]
 
-# Ejemplo de uso
-cara_x_y, cara_y_z = cambiar_cara(3)
-print("Cara [x, y]:")
-print(cara_x_y)
-print("\nCara [y, z]:")
-print(cara_y_z)
+    # DIBUJAR LETRAS EN FORMATO DE CRUCIGRAMA
+    # "TAR" en forma vertical
+    for i, letter in enumerate(tar_message):
+        screen.blit(letter, (start_button.x + (start_button.width - letter.get_width()) / 2,
+                             start_button.y + (start_button.height - letter.get_height()) / 2 - 30 + i * 35))
+
+    # "EXIT" en forma horizontal
+    exit_message = [fuente.render("  E ", True, (0, 0, 0)),
+                    fuente.render("  X ", True, (0, 0, 0)),
+                    fuente.render("  I ", True, (0, 0, 0)),
+                    fuente.render("   T", True, (0, 0, 0))]
+
+    for i, letter in enumerate(exit_message):
+        screen.blit(letter, (exit_button.x + (i * 20), exit_button.y + (exit_button.height - letter.get_height()) / 2))
+
+    pygame.display.update()
+
+pygame.quit()
