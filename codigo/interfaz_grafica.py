@@ -2,8 +2,7 @@ import sys
 import pygame
 
 
-print(os.getcwd())
-
+# INICIALIZACIÓN
 
 pygame.init()
 
@@ -65,6 +64,10 @@ def initial_screen():
 
 def screen_options():
     """FUNTIONS THTAT SHOW THE OPTIONS SCREEN
+
+    Returns:   back_button: pygame.Rect: Button of the screen, 
+    predeterminate_crosswords: pygame.Rect: Button of the screen, 
+    create_crosswords: pygame.Rect: Button
     """
     screen.fill((250, 250, 250))
 
@@ -77,6 +80,11 @@ def screen_options():
     pygame.draw.rect(screen, (214, 134, 250), predeterminate_crosswords)
     pygame.draw.rect(screen, (214, 134, 250), create_crosswords)
     pygame.draw.rect(screen, (242, 75, 112), back_button)
+
+    pygame.draw.rect(screen, (0, 0, 0), options_title, 2)
+    pygame.draw.rect(screen, (0, 0, 0), predeterminate_crosswords, 2)
+    pygame.draw.rect(screen, (0, 0, 0), create_crosswords, 2)
+    pygame.draw.rect(screen, (0, 0, 0), back_button, 2)
 
     options_title_text = fuente.render(" G A M E    O P T I O N S", True, (0, 0, 0))
     screen.blit(options_title_text, (options_title.x + (options_title.width - options_title_text.get_width()) / 2,
@@ -95,10 +103,44 @@ def screen_options():
                             back_button.y + (back_button.height - back_button_text.get_height()) / 2))
     pygame.display.update()
     return predeterminate_crosswords, create_crosswords, back_button
-def create_crosswords():
+def create_crosswords_screen():
     """FUNTIONS THTAT SHOW THE OPTIONS SCREEN
     """
     screen.fill((250, 250, 250))
+
+    create_crosswords_title = pygame.Rect(85, 20, 420, 45)
+    easy_mode_button = pygame.Rect(115, 85, 250, 35)
+    medium_mode_button = pygame.Rect(115, 130, 250, 35)
+    hard_mode_button = pygame.Rect(115, 175, 250, 35)
+    screen_options_button = pygame.Rect(300, 220, 150, 35)
+
+    pygame.draw.rect(screen, (131, 240, 70 ), create_crosswords_title)
+    pygame.draw.rect(screen, (242, 75, 112), screen_options_button)
+    pygame.draw.rect(screen, (214, 134, 250), easy_mode_button)
+    pygame.draw.rect(screen, (214, 134, 250), medium_mode_button)
+    pygame.draw.rect(screen, (214, 134, 250), hard_mode_button)
+
+    create_crosswords_title_text = fuente.render(" C R E A T E   C R O S S W O R D S", True, (0, 0, 0))
+    screen.blit(create_crosswords_title_text, (create_crosswords_title.x + (create_crosswords_title.width - create_crosswords_title_text.get_width()) / 2,
+            create_crosswords_title.y + (create_crosswords_title.height - create_crosswords_title_text.get_height()) / 2)) 
+    screen_options_button_text = fuente2.render("Screen options", True, (0, 0, 0))
+    screen.blit(screen_options_button_text, (screen_options_button.x + (screen_options_button.width - screen_options_button_text.get_width()) / 2,
+            screen_options_button.y + (screen_options_button.height - screen_options_button_text.get_height()) / 2))    
+    easy_mode_button_text = fuente2.render("Easy mode", True, (0, 0, 0))
+    screen.blit(easy_mode_button_text, (easy_mode_button.x + (easy_mode_button.width - easy_mode_button_text.get_width()) / 2,
+            easy_mode_button.y + (easy_mode_button.height - easy_mode_button_text.get_height()) / 2))
+    medium_mode_button_text = fuente2.render("Medium mode", True, (0, 0, 0))
+    screen.blit(medium_mode_button_text, (medium_mode_button.x + (medium_mode_button.width - medium_mode_button_text.get_width()) / 2,
+            medium_mode_button.y + (medium_mode_button.height - medium_mode_button_text.get_height()) / 2))
+    hard_mode_button_text = fuente2.render("Hard mode", True, (0, 0, 0))    
+    screen.blit(hard_mode_button_text, (hard_mode_button.x + (hard_mode_button.width - hard_mode_button_text.get_width()) / 2,
+            hard_mode_button.y + (hard_mode_button.height - hard_mode_button_text.get_height()) / 2))
+
+    pygame.display.update()
+
+    return screen_options_button, easy_mode_button, medium_mode_button, hard_mode_button
+
+
 
 
 # Bucle principal del juego
@@ -112,6 +154,14 @@ exit_button = None
 predeterminate_crosswords_button = None
 create_crosswords_button = None
 back_button = None
+########
+#pasar los botones necesarios = create_crosswords_screen()
+########
+screen_options_button = None
+easy_mode_button = None
+medium_mode_button = None
+hard_mode_button = None
+########
 
 while running:
     for event in pygame.event.get():
@@ -130,14 +180,22 @@ while running:
                     current_screen = "initial"
                 elif create_crosswords_button.collidepoint(event.pos):
                     current_screen = "create_crosswords"
+            elif current_screen == "create_crosswords" and screen_options_button and easy_mode_button and medium_mode_button and hard_mode_button:
+                if screen_options_button.collidepoint(event.pos):
+                    current_screen = "options"
+                elif easy_mode_button.collidepoint(event.pos):
+                    print("easy mode")
+                elif medium_mode_button.collidepoint(event.pos):
+                    print("medium mode")
+                elif hard_mode_button.collidepoint(event.pos):
+                    print("hard mode")
     if current_screen == "initial":
         start_button, exit_button = initial_screen()
     elif current_screen == "options":
         screen_options()
         predeterminate_crosswords_button, create_crosswords_button, back_button = screen_options()
-       #pasar los botones necesarios = screen_options()
     elif current_screen == "create_crosswords":
-        create_crosswords()
+        screen_options_button, easy_mode_button, medium_mode_button, hard_mode_button = create_crosswords_screen()
 
 
     pygame.display.flip()
