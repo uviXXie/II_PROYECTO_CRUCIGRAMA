@@ -27,6 +27,7 @@ def create_matrix(side: int) -> list:
     matrix = np.full((x, y), ' ', dtype=object) 
     return matrix
 
+
 def switch_face_xy(side: int, matrix: list) -> tuple[np.ndarray, np.ndarray]:
     """
     Extracs the first face of the cube.
