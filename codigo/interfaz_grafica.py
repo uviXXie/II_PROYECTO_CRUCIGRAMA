@@ -1,7 +1,7 @@
 import sys
 import pygame
 
-
+#
 # INICIALIZACIÓN
 
 pygame.init()
