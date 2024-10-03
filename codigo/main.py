@@ -40,11 +40,11 @@ def switch_face_xy(side: int, matrix: list) -> tuple[np.ndarray, np.ndarray]:
         tuple[np.ndarray, np.ndarray]: MATRIX REPRESENTING FACE XY
     """
     matriz = create_matrix(side)
-    N, M = matriz.shape
+    N, M = matrix.shape
     if M != (N * 2 - 1):
         raise ValueError("La matriz debe tener dimensiones N x M, donde M = N * 2 - 1.")
 
-    cara_x_y = matriz[:, :N]
+    cara_x_y = matrix[:, :N]
     return cara_x_y
    
 def switch_face_yz(side: int, matrix: list) -> tuple[np.ndarray]:
@@ -58,10 +58,10 @@ def switch_face_yz(side: int, matrix: list) -> tuple[np.ndarray]:
     Returns:
         tuple[np.ndarray]: MATRIX REPRESENTING FACE YZ
     """
-    N, M = matriz.shape
+    N, M = matrix.shape
     if M != (N * 2 - 1):
         raise ValueError("La matriz debe tener dimensiones N x M, donde M = N * 2 - 1.")
-    cara_y_z = matriz[:, N-1:]
+    cara_y_z = matrix[:, N-1:]
     return cara_y_z 
     
 def get_crossword_cords(side: int , face:int, x: int , y: int) -> tuple[int,int]:
