@@ -203,7 +203,7 @@ def created_crosswords_screen():
 
 
     return screen_options_button, easy_mode, medium_mode, hard_mode
-def level_easy_screen_1():
+def level_easy_screen_1() -> pygame.Rect:
     """NUMBER ONE LEVEL OF THE CROSSWORDS PRE CREATED
 
     Returns:
@@ -288,7 +288,6 @@ def level_easy_screen_1():
 
     return back_button_1, face_button_xy
 
-    return back_button_2, face_button_yz
 def easy_mode_xy(size:int, matrix: list) -> pygame.Rect:
     """SHOWS THE CROSSWORDS IN XY
 
@@ -444,7 +443,7 @@ def level_med_screen() -> pygame.Rect :
         word6_puzzle.y + (word6_puzzle.height - word6_puzzle_text.get_height()) / 2))
 
     return back_button_2, button_xy_med_pre, next_button
-def level_med_screen_2():
+def level_med_screen_2() -> pygame.Rect:
     """SHOWS THE SECOND LEVEL OF THE CROSSWORDS
     """
     screen.fill((250, 250, 250))
@@ -677,8 +676,6 @@ while running:
                     current_screen = "created_crosswords"
                 elif face_button_xy.collidepoint(event.pos):
                     current_screen = "easy_mode_xy"   
-                elif face_button_yz.collidepoint(event.pos):
-                    current_screen = "easy_mode_xy"
             elif current_screen == "easy_mode_xy" and xy_hints and to_yz:
                 if xy_hints.collidepoint(event.pos):
                     current_screen = "level_easy_screen_1"
