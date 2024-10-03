@@ -223,6 +223,7 @@ screen_options_button = None
 easy_mode= None
 medium_mode = None
 hard_mode = None
+#
 
 
 while running:
