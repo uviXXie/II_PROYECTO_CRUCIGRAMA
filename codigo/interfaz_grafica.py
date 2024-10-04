@@ -645,7 +645,6 @@ def level_hard_screen():
         word6_puzzle.y + (word6_puzzle.height - word6_puzzle_text.get_height()) / 2))
 
     return back_button_3, face_button_xy_hd, next_button_3
-
 def level_hard_screen_2():
     screen.fill((250, 250, 250))
 
@@ -767,7 +766,76 @@ def level_hard_screen_3():
         word4_puzzle.y + (word4_puzzle.height - word4_puzzle_text.get_height()) / 2))
 
     return back_button_3
+def hard_mode_xy(size: int, matrix: list):
+    """SHOWS THE CROSSWORDS IN XY
 
+    Args:
+        matrix (list): matrix to show
+
+    Returns:
+        xy_hints: pygame.Rect: Button of the screen
+    """
+    
+    face_xy = cara_xy(size, matrix)
+
+    screen.fill((250, 250, 250))
+
+    xy_hints = pygame.Rect(450, 10, 60, 40)
+    to_yz = pygame.Rect(450, 60, 60, 40)
+
+
+    pygame.draw.rect(screen, (226, 130, 255), xy_hints, 2)
+    pygame.draw.rect(screen, (226, 130, 255), to_yz, 2)
+
+    pygame.draw.rect(screen, (0, 0, 0), xy_hints, 2)
+    pygame.draw.rect(screen, (0, 0, 0), to_yz, 2)
+
+
+
+    xy_hints_text = fuente2.render("HINTS", True, (0, 0, 0))
+    screen.blit(xy_hints_text, (xy_hints.x + (xy_hints.width - xy_hints_text.get_width()) / 2,
+        xy_hints.y + (xy_hints.height - xy_hints_text.get_height()) / 2))
+
+    to_yz_text = fuente2.render("YZ", True, (0, 0, 0))
+    screen.blit(to_yz_text, (to_yz.x + (to_yz.width - to_yz_text.get_width()) / 2,
+        to_yz.y + (to_yz.height - to_yz_text.get_height()) / 2))
+
+    return xy_hints, to_yz
+def hard_mode_yz(size: int, matrix: list):
+    """SHOWS THE CROSSWORDS IN YZ
+
+    Args:
+        matrix (list): matrix to show
+
+    Returns:
+        yz_hints: pygame.Rect: Button of the screen
+    """
+    
+    face_yz = cara_yz(size, matrix)
+
+    screen.fill((250, 250, 250))
+
+    yz_hints = pygame.Rect(450, 10, 60, 40)
+    to_xy = pygame.Rect(450, 60, 60, 40)
+
+
+
+    pygame.draw.rect(screen, (226, 130, 255), yz_hints, 2)
+    pygame.draw.rect(screen, (226, 130, 255), to_xy, 2)
+
+    pygame.draw.rect(screen, (0, 0, 0), yz_hints, 2)
+    pygame.draw.rect(screen, (0, 0, 0), to_xy, 2)
+
+
+    yz_hints_text = fuente2.render("HINTS", True, (0, 0, 0))
+    screen.blit(yz_hints_text, (yz_hints.x + (yz_hints.width - yz_hints_text.get_width()) / 2,
+        yz_hints.y + (yz_hints.height - yz_hints_text.get_height()) / 2))
+    
+    to_xy_text = fuente2.render("XY", True, (0, 0, 0))
+    screen.blit(to_xy_text, (to_xy.x + (to_xy.width - to_xy_text.get_width()) / 2,
+        to_xy.y + (to_xy.height - to_xy_text.get_height()) / 2))
+    
+    return yz_hints, to_xy
 
 
 
@@ -938,7 +1006,7 @@ while running:
                 if back_button_3.collidepoint(event.pos):
                     current_screen = "created_crosswords"
                 elif face_button_xy_hd.collidepoint(event.pos):
-                    print("hard mode xy")
+                    current_screen = "hard_mode_xy"
                 elif next_button_3.collidepoint(event.pos):
                     current_screen = "level_hard_screen_2"
             elif current_screen == "level_hard_screen_2" and back_button_3 and next_button_4:
@@ -949,6 +1017,16 @@ while running:
             elif current_screen == "level_hard_screen_3" and back_button_3:
                 if back_button_3.collidepoint(event.pos):
                     current_screen = "level_hard_screen_2"
+            elif current_screen == "hard_mode_xy" and xy_hints and to_yz:
+                if xy_hints.collidepoint(event.pos):
+                    current_screen = "level_hard_screen"
+                if to_yz.collidepoint(event.pos):
+                    current_screen = "hard_mode_yz"
+            elif current_screen == "hard_mode_yz" and yz_hints and to_xy:
+                if yz_hints.collidepoint(event.pos):
+                    current_screen = "level_hard_screen"
+                if to_xy.collidepoint(event.pos):
+                    current_screen = "hard_mode_xy"
             
     if current_screen == "initial":
         start_button, exit_button = initial_screen()
@@ -979,6 +1057,10 @@ while running:
         back_button_3, next_button_4 = level_hard_screen_2()
     elif current_screen == "level_hard_screen_3":
         back_button_3 = level_hard_screen_3()
+    elif current_screen == "hard_mode_xy":
+        xy_hints, to_yz = hard_mode_xy(hard_pre_size,animals_matrix)
+    elif current_screen == "hard_mode_yz":
+        yz_hints, to_xy = hard_mode_yz(hard_pre_size,animals_matrix)
     
 
 
