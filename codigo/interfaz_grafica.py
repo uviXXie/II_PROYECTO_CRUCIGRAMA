@@ -567,6 +567,207 @@ def medium_mode_yz(size: int, matrix: list):
         to_xy.y + (to_xy.height - to_xy_text.get_height()) / 2))
     
     return yz_hints, to_xy
+def level_hard_screen():
+
+    screen.fill((250, 250, 250))
+
+    level_title = pygame.Rect(60, 10, 300, 45)
+    face_button_xy_hd = pygame.Rect(450, 10, 45, 35)
+    next_button_3 = pygame.Rect(25, 240, 35, 35)
+    back_button_3 = pygame.Rect(350, 240, 150, 35)
+    word1_puzzle = pygame.Rect(15, 85, 250, 50)
+    word2_puzzle = pygame.Rect(15, 130, 250, 50)
+    word3_puzzle = pygame.Rect(15, 175, 250, 50)
+    word4_puzzle = pygame.Rect(285, 85, 250, 50)
+    word5_puzzle = pygame.Rect(285, 130, 250, 50)
+    word6_puzzle  = pygame.Rect(285, 175, 250, 50)
+
+    pygame.draw.rect(screen, (131, 240, 70 ), level_title)
+    pygame.draw.rect(screen, (242, 75, 112), face_button_xy_hd)
+    pygame.draw.rect(screen, (242, 75, 112), back_button_3)
+    pygame.draw.rect(screen, (242, 75, 112), next_button_3)
+    pygame.draw.rect(screen, (214, 134, 250), word1_puzzle)
+    pygame.draw.rect(screen, (214, 134, 250), word2_puzzle)
+    pygame.draw.rect(screen, (214, 134, 250), word3_puzzle)
+    pygame.draw.rect(screen, (214, 134, 250), word4_puzzle)
+    pygame.draw.rect(screen, (214, 134, 250), word5_puzzle)
+    pygame.draw.rect(screen, (214, 134, 250), word6_puzzle)
+
+    pygame.draw.rect(screen, (0, 0, 0), level_title, 2)
+    pygame.draw.rect(screen, (0, 0, 0), back_button_3, 2)
+    pygame.draw.rect(screen, (0, 0, 0), face_button_xy_hd, 2)
+    pygame.draw.rect(screen, (0, 0, 0), next_button_3, 2)
+    pygame.draw.rect(screen, (0, 0, 0), word1_puzzle, 2)
+    pygame.draw.rect(screen, (0, 0, 0), word2_puzzle, 2)
+    pygame.draw.rect(screen, (0, 0, 0), word3_puzzle, 2)
+    pygame.draw.rect(screen, (0, 0, 0), word4_puzzle, 2)
+    pygame.draw.rect(screen, (0, 0, 0), word5_puzzle, 2)
+    pygame.draw.rect(screen, (0, 0, 0), word6_puzzle, 2)
+
+    level_title_text = fuente.render(" A N I M A L S ", True, (0, 0, 0))
+    screen.blit(level_title_text, (level_title.x + (level_title.width - level_title_text.get_width()) / 2,
+        level_title.y + (level_title.height - level_title_text.get_height()) / 2 - 10))
+    
+    face_button_xy_hd_text = fuente2.render("CRW", True, (0, 0, 0))
+    screen.blit(face_button_xy_hd_text, (face_button_xy_hd.x + (face_button_xy_hd.width - face_button_xy_hd_text.get_width()) / 2,
+        face_button_xy_hd.y + (face_button_xy_hd.height - face_button_xy_hd_text.get_height()) / 2))
+
+    back_button_3_text = fuente2.render("B A C K ", True, (0, 0, 0))
+    screen.blit(back_button_3_text, (back_button_3.x + (back_button_3.width - back_button_3_text.get_width()) / 2,
+        back_button_3.y + (back_button_3.height - back_button_3_text.get_height()) / 2))
+
+    next_button_3_text = fuente2.render("->", True, (0, 0, 0))
+    screen.blit(next_button_3_text, (next_button_3.x + (next_button_3.width - next_button_3_text.get_width()) / 2,
+        next_button_3.y + (next_button_3.height - next_button_3_text.get_height()) / 2))
+
+    word1_puzzle_text = fuente3.render("1. The biggest animal in the world", True, (0, 0, 0))
+    screen.blit(word1_puzzle_text, (word1_puzzle.x + (word1_puzzle.width - word1_puzzle_text.get_width()) / 2,
+        word1_puzzle.y + (word1_puzzle.height - word1_puzzle_text.get_height()) / 2))
+
+    word2_puzzle_text = fuente3.render("2. Animal with eight arms", True, (0, 0, 0))
+    screen.blit(word2_puzzle_text, (word2_puzzle.x + (word2_puzzle.width - word2_puzzle_text.get_width()) / 2,
+        word2_puzzle.y + (word2_puzzle.height - word2_puzzle_text.get_height()) / 2))
+
+    word3_puzzle_text = fuente3.render("3. Biggest killer of the sea", True, (0, 0, 0))
+    screen.blit(word3_puzzle_text, (word3_puzzle.x + (word3_puzzle.width - word3_puzzle_text.get_width()) / 2,
+        word3_puzzle.y + (word3_puzzle.height - word3_puzzle_text.get_height()) / 2))
+    
+    word4_puzzle_text = fuente3.render("4. The animal with the longest neck", True, (0, 0, 0))
+    screen.blit(word4_puzzle_text, (word4_puzzle.x + (word4_puzzle.width - word4_puzzle_text.get_width()) / 2,      
+        word4_puzzle.y + (word4_puzzle.height - word4_puzzle_text.get_height()) / 2))
+
+    word5_puzzle_text = fuente3.render("5. The animal with the biggest ears", True, (0, 0, 0))  
+    screen.blit(word5_puzzle_text, (word5_puzzle.x + (word5_puzzle.width - word5_puzzle_text.get_width()) / 2,
+        word5_puzzle.y + (word5_puzzle.height - word5_puzzle_text.get_height()) / 2))
+
+    word6_puzzle_text = fuente3.render("6. Black and white animal", True, (0, 0, 0))
+    screen.blit(word6_puzzle_text, (word6_puzzle.x + (word6_puzzle.width - word6_puzzle_text.get_width()) / 2,
+        word6_puzzle.y + (word6_puzzle.height - word6_puzzle_text.get_height()) / 2))
+
+    return back_button_3, face_button_xy_hd, next_button_3
+
+def level_hard_screen_2():
+    screen.fill((250, 250, 250))
+
+    level_title = pygame.Rect(60, 10, 300, 45)
+    back_button_3 = pygame.Rect(350, 240, 35, 35)
+    next_button_4 = pygame.Rect(25, 240, 35, 35)
+    word1_puzzle = pygame.Rect(15, 85, 250, 50)
+    word2_puzzle = pygame.Rect(15, 130, 250, 50)
+    word3_puzzle = pygame.Rect(15, 175, 250, 50)
+    word4_puzzle = pygame.Rect(285, 85, 250, 50)
+    word5_puzzle = pygame.Rect(285, 130, 250, 50)
+    word6_puzzle  = pygame.Rect(285, 175, 250, 50)
+
+    pygame.draw.rect(screen, (131, 240, 70 ), level_title)
+    pygame.draw.rect(screen, (242, 75, 112), back_button_3)
+    pygame.draw.rect(screen, (242, 75, 112), next_button_4)
+    pygame.draw.rect(screen, (214, 134, 250), word1_puzzle)
+    pygame.draw.rect(screen, (214, 134, 250), word2_puzzle)
+    pygame.draw.rect(screen, (214, 134, 250), word3_puzzle)
+    pygame.draw.rect(screen, (214, 134, 250), word4_puzzle)
+    pygame.draw.rect(screen, (214, 134, 250), word5_puzzle)
+    pygame.draw.rect(screen, (214, 134, 250), word6_puzzle)
+
+    pygame.draw.rect(screen, (0, 0, 0), level_title, 2)
+    pygame.draw.rect(screen, (0, 0, 0), back_button_3, 2)
+    pygame.draw.rect(screen, (0, 0, 0), next_button_4, 2)
+    pygame.draw.rect(screen, (0, 0, 0), word1_puzzle, 2)
+    pygame.draw.rect(screen, (0, 0, 0), word2_puzzle, 2)
+    pygame.draw.rect(screen, (0, 0, 0), word3_puzzle, 2)
+    pygame.draw.rect(screen, (0, 0, 0), word4_puzzle, 2)
+    pygame.draw.rect(screen, (0, 0, 0), word5_puzzle, 2)
+    pygame.draw.rect(screen, (0, 0, 0), word6_puzzle, 2)
+
+    level_title_text = fuente.render(" A N I M A L S ", True, (0, 0, 0))
+    screen.blit(level_title_text, (level_title.x + (level_title.width - level_title_text.get_width()) / 2,
+        level_title.y + (level_title.height - level_title_text.get_height()) / 2 - 10))
+
+    back_button_3_text = fuente2.render("<- ", True, (0, 0, 0))
+    screen.blit(back_button_3_text, (back_button_3.x + (back_button_3.width - back_button_3_text.get_width()) / 2,
+        back_button_3.y + (back_button_3.height - back_button_3_text.get_height()) / 2))
+
+    next_button_4_text = fuente2.render("->", True, (0, 0, 0))  
+    screen.blit(next_button_4_text, (next_button_4.x + (next_button_4.width - next_button_4_text.get_width()) / 2,
+        next_button_4.y + (next_button_4.height - next_button_4_text.get_height()) / 2))
+
+    word1_puzzle_text = fuente3.render("7. A beautiful flyer bug", True, (0, 0, 0))
+    screen.blit(word1_puzzle_text, (word1_puzzle.x + (word1_puzzle.width - word1_puzzle_text.get_width()) / 2,
+        word1_puzzle.y + (word1_puzzle.height - word1_puzzle_text.get_height()) / 2))
+
+    word2_puzzle_text = fuente3.render("8. The animal with the biggest mouth", True, (0, 0, 0))
+    screen.blit(word2_puzzle_text, (word2_puzzle.x + (word2_puzzle.width - word2_puzzle_text.get_width()) / 2,
+        word2_puzzle.y + (word2_puzzle.height - word2_puzzle_text.get_height()) / 2))
+
+    word3_puzzle_text = fuente3.render("9. The biggest cat ", True, (0, 0, 0))
+    screen.blit(word3_puzzle_text, (word3_puzzle.x + (word3_puzzle.width - word3_puzzle_text.get_width()) / 2,    
+        word3_puzzle.y + (word3_puzzle.height - word3_puzzle_text.get_height()) / 2))
+
+    word4_puzzle_text = fuente3.render("10. The fastest animal", True, (0, 0, 0))
+    screen.blit(word4_puzzle_text, (word4_puzzle.x + (word4_puzzle.width - word4_puzzle_text.get_width()) / 2,
+        word4_puzzle.y + (word4_puzzle.height - word4_puzzle_text.get_height()) / 2))
+
+    word5_puzzle_text = fuente3.render("11. The animal that eat bananas", True, (0, 0, 0))    
+    screen.blit(word5_puzzle_text, (word5_puzzle.x + (word5_puzzle.width - word5_puzzle_text.get_width()) / 2
+        ,word5_puzzle.y + (word5_puzzle.height - word5_puzzle_text.get_height()) / 2))
+
+    word6_puzzle_text = fuente3.render("12. Red little animal with black spots", True, (0, 0, 0))
+    screen.blit(word6_puzzle_text, (word6_puzzle.x + (word6_puzzle.width - word6_puzzle_text.get_width()) / 2,
+        word6_puzzle.y + (word6_puzzle.height - word6_puzzle_text.get_height()) / 2))
+
+    return back_button_3, next_button_4
+def level_hard_screen_3():
+
+    screen.fill((250, 250, 250))
+
+    level_title = pygame.Rect(60, 10, 300, 45)
+    back_button_3 = pygame.Rect(350, 240, 35, 35)
+    word1_puzzle = pygame.Rect(15, 85, 250, 50)
+    word2_puzzle = pygame.Rect(15, 130, 250, 50)
+    word3_puzzle = pygame.Rect(15, 175, 250, 50)
+    word4_puzzle = pygame.Rect(285, 85, 250, 50)
+
+
+    pygame.draw.rect(screen, (131, 240, 70 ), level_title)
+    pygame.draw.rect(screen, (242, 75, 112), back_button_3)
+    pygame.draw.rect(screen, (214, 134, 250), word1_puzzle)
+    pygame.draw.rect(screen, (214, 134, 250), word2_puzzle)
+    pygame.draw.rect(screen, (214, 134, 250), word3_puzzle)
+    pygame.draw.rect(screen, (214, 134, 250), word4_puzzle)
+
+    pygame.draw.rect(screen, (0, 0, 0), level_title, 2)
+    pygame.draw.rect(screen, (0, 0, 0), back_button_3, 2)
+    pygame.draw.rect(screen, (0, 0, 0), word1_puzzle, 2)
+    pygame.draw.rect(screen, (0, 0, 0), word2_puzzle, 2)
+    pygame.draw.rect(screen, (0, 0, 0), word3_puzzle, 2)
+    pygame.draw.rect(screen, (0, 0, 0), word4_puzzle, 2)
+
+    level_title_text = fuente.render(" A N I M A L S ", True, (0, 0, 0))
+    screen.blit(level_title_text, (level_title.x + (level_title.width - level_title_text.get_width()) / 2,
+        level_title.y + (level_title.height - level_title_text.get_height()) / 2 - 10))
+
+    back_button_3_text = fuente2.render("<- ", True, (0, 0, 0))
+    screen.blit(back_button_3_text, (back_button_3.x + (back_button_3.width - back_button_3_text.get_width()) / 2,
+        back_button_3.y + (back_button_3.height - back_button_3_text.get_height()) / 2))
+
+    word1_puzzle_text = fuente3.render("13. Night fliers with big ears", True, (0, 0, 0))
+    screen.blit(word1_puzzle_text, (word1_puzzle.x + (word1_puzzle.width - word1_puzzle_text.get_width()) / 2,
+        word1_puzzle.y + (word1_puzzle.height - word1_puzzle_text.get_height()) / 2))
+
+    word2_puzzle_text = fuente3.render("14. The animal with the biggest horns", True, (0, 0, 0))
+    screen.blit(word2_puzzle_text, (word2_puzzle.x + (word2_puzzle.width - word2_puzzle_text.get_width()) / 2,
+        word2_puzzle.y + (word2_puzzle.height - word2_puzzle_text.get_height()) / 2))
+
+    word3_puzzle_text = fuente3.render("15. The animal that sings in the river", True, (0, 0, 0))
+    screen.blit(word3_puzzle_text, (word3_puzzle.x + (word3_puzzle.width - word3_puzzle_text.get_width()) / 2,
+        word3_puzzle.y + (word3_puzzle.height - word3_puzzle_text.get_height()) / 2))
+
+    word4_puzzle_text = fuente3.render("16. The friendly animal of the sea", True, (0, 0, 0))
+    screen.blit(word4_puzzle_text, (word4_puzzle.x + (word4_puzzle.width - word4_puzzle_text.get_width()) / 2,
+        word4_puzzle.y + (word4_puzzle.height - word4_puzzle_text.get_height()) / 2))
+
+    return back_button_3
+
 
 
 
@@ -613,8 +814,8 @@ face_button_yz = None
 xy_hints = None
 to_yz = None
 easy_pre_size = 6
-words = ['france', 'india', 'japan', 'egypt', 'australia', 'brazil']
-countries_matrix = all(easy_pre_size , words) 
+words_countries = ['france', 'india', 'japan', 'egypt', 'australia', 'brazil']
+countries_matrix = all(easy_pre_size , words_countries) 
 ########
 #pasar los botones necesarios = easy_mode_yz()
 ########
@@ -623,9 +824,9 @@ to_xy = None
 ########
 #pasar los botones necesarios = level_med_screen()
 ########
-words = ['saturn', 'mars', 'venus', 'neptune', 'jupiter', 'sun', 'earth', 'uranus', 'mercury', 'orbit']
+words_planets = ['saturn', 'mars', 'venus', 'neptune', 'jupiter', 'sun', 'earth', 'uranus', 'mercury', 'orbit']
 med_pre_size = 12
-solar_matrix = all(med_pre_size, words)
+solar_matrix = all(med_pre_size, words_planets)
 back_button_2 = None
 button_xy_med_pre = None
 next_button = None
@@ -633,6 +834,33 @@ next_button = None
 #pasar los botones necesarios = level_med_screen_2()
 ########
 back_button_2 = None
+########
+#pasar los botones necesarios = medium_mode_xy()
+########
+xy_hints = None
+to_yz = None
+########
+#pasar los botones necesarios = medium_mode_yz()
+########
+yz_hints = None
+to_xy = None
+########
+#pasar los botones necesarios = level_hard_screen()
+########
+words_animals = ['whale', 'octopus', 'shark', 'giraffe', 'elephant', 'panda', 'butterfly', 'hippopotamus', 'tiger', 'cheetah', 'monkey', 'ladybug', 'bat', 'buffalo', 'frog', 'dolphin']
+hard_pre_size = 24
+animals_matrix = all(hard_pre_size, words_animals)
+back_button_3 = None
+face_button_xy_hd = None
+next_button_4 = None
+next_button_3 = None
+########
+#pasar los botones necesarios = level_hard_screen_2()
+########
+back_button_3 = None
+next_button_4 = None
+
+
 
 
 
@@ -670,7 +898,7 @@ while running:
                 elif medium_mode.collidepoint(event.pos):
                     current_screen = "level_med_screen"
                 elif hard_mode.collidepoint(event.pos):
-                    print("hard mode")
+                    current_screen = "level_hard_screen"
             elif current_screen == "level_easy_screen_1" and back_button_1  and face_button_xy:
                 if back_button_1.collidepoint(event.pos):
                     current_screen = "created_crosswords"
@@ -706,6 +934,22 @@ while running:
                     current_screen = "level_med_screen"
                 if to_xy.collidepoint(event.pos):
                     current_screen = "medium_mode_xy"
+            elif current_screen == "level_hard_screen" and back_button_3 and face_button_xy_hd and next_button_3:
+                if back_button_3.collidepoint(event.pos):
+                    current_screen = "created_crosswords"
+                elif face_button_xy_hd.collidepoint(event.pos):
+                    print("hard mode xy")
+                elif next_button_3.collidepoint(event.pos):
+                    current_screen = "level_hard_screen_2"
+            elif current_screen == "level_hard_screen_2" and back_button_3 and next_button_4:
+                if back_button_3.collidepoint(event.pos):
+                    current_screen = "level_hard_screen"
+                elif next_button_4.collidepoint(event.pos):
+                    current_screen = "level_hard_screen_3"
+            elif current_screen == "level_hard_screen_3" and back_button_3:
+                if back_button_3.collidepoint(event.pos):
+                    current_screen = "level_hard_screen_2"
+            
     if current_screen == "initial":
         start_button, exit_button = initial_screen()
     elif current_screen == "options":
@@ -729,6 +973,13 @@ while running:
         xy_hints, to_yz = medium_mode_xy(med_pre_size,solar_matrix)
     elif current_screen == "medium_mode_yz":
         yz_hints, to_xy = medium_mode_yz(med_pre_size,solar_matrix)
+    elif current_screen == "level_hard_screen":
+        back_button_3, face_button_xy_hd, next_button_3 = level_hard_screen()
+    elif current_screen == "level_hard_screen_2":
+        back_button_3, next_button_4 = level_hard_screen_2()
+    elif current_screen == "level_hard_screen_3":
+        back_button_3 = level_hard_screen_3()
+    
 
 
 
